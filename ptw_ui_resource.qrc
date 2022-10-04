@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="glossy_buttons">
+    <file>glossy_button.png</file>
+  </qresource>
+</RCC>
