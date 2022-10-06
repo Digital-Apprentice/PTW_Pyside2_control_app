@@ -12,7 +12,7 @@ from database.dbo import *
 from ptw_classes import *
 from PySide2.QtSerialPort import *
 import json
-import barcode          #python-barcode
+import barcode          #python-barcode v0.13.1 !!!, need also Pillow library- is required to generate barcodes in image formats (such as png or jpg)
 from barcode.writer import ImageWriter
 import sys
 
@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         # self.setWindowFlag(Qt.FramelessWindowHint)  # then restore
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.first_run = True
+        self.first_run = False
         self.counter = 1
 
         # assigning gui fields to the variable of each compartment
@@ -815,11 +815,11 @@ class MainWindow(QMainWindow):
 
     def load_file(self, type):
         if type == 'ptwh':
-            name = QFileDialog.getOpenFileName(self, 'Open file', '~/Put_to_wall/PTW_Pyside2_control_app/saved/',
+            name = QFileDialog.getOpenFileName(self, 'Open file', '/home/pi/Put_to_Wall/PTW_Pyside2_control_app/saved/',
                                                'History files (*.ptwh)')
             self.ui.hboff_filename_label.setText(name[0])
         elif type == 'ptws':
-            name = QFileDialog.getOpenFileName(self, 'Open file', '~/Put_to_wall/PTW_Pyside2_control_app/saved/',
+            name = QFileDialog.getOpenFileName(self, 'Open file', '/home/pi/Put_to_Wall/PTW_Pyside2_control_app/saved/',
                                                'Statistic files (*.ptws)')
             filename = name[0][name[0].rfind('/'):]
             self.ui.bs_filename_label.setText(filename)
@@ -834,14 +834,14 @@ class MainWindow(QMainWindow):
     def save_file(self, type):
         if type == 'ptwh':
             content = self.ui.pbo_textBrowser.toHtml()
-            # file_name = '~/PTW_Pyside2_control_app/saved/'+'History_'+QDate.currentDate().toString(Qt.DefaultLocaleShortDate)+'_'+QTime.currentTime().toString()+'.ptwh'
-            file_name = '~/home/pi/Put_to_wall/PTW_Pyside2_control_app/saved/' + 'History_' + QDate.currentDate().toString(
+            # file_name = '~/home/pi/Put_to_Wall/PTW_Pyside2_control_app/saved'+'History_'+QDate.currentDate().toString(Qt.DefaultLocaleShortDate)+'_'+QTime.currentTime().toString()+'.ptwh'
+            file_name = '/home/pi/Put_to_Wall/PTW_Pyside2_control_app/saved/' + 'History_' + QDate.currentDate().toString(
                 Qt.DefaultLocaleShortDate) + '.ptwh'
             with open(file_name, 'w') as file:
                 json.dump(content, file)
         elif type == 'ptws':
             print('save:   ', self.b.batch_stats)
-            file_name = '~/home/pi/Put_to_wall/PTW_Pyside2_control_app/saved/' + str(
+            file_name = '/home/pi/Put_to_Wall/PTW_Pyside2_control_app/saved/' + str(
                 self.b.batch_no) + '_' + QDate.currentDate().toString(
                 Qt.DefaultLocaleShortDate) + '_' + QTime.currentTime().toString() + '.ptws'
             with open(file_name, 'w') as file:
@@ -849,7 +849,7 @@ class MainWindow(QMainWindow):
         file.close()
 
     def delete_file(self):
-        filename = QFileDialog.getOpenFileName(self, 'Remove file', '~/Put_to_wall/PTW_Pyside2_control_app/saved/',
+        filename = QFileDialog.getOpenFileName(self, 'Remove file', '/home/pi/Put_to_Wall/PTW_Pyside2_control_app/saved/',
                                                'Statistic files (*.ptw*)')
         QFile.remove(filename[0])
 
