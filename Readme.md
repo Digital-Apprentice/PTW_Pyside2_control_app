@@ -28,13 +28,16 @@ The application dashboard is presented below.
 
 ![img.png](pictures/gui_dashboard.png)
 
-#### Additionally, it is possible to:
+#### Additionally, it's possible to:
 
-##### Creation of your own Batch's
+##### Create of your own Batch's
 ![img.png](pictures/batch_editor.png)
 
-##### Viewing process statistics
+##### View process statistics
 ![img.png](pictures/batch_statistics.png)
 
-##### Viewing the history of all operations (log)
+##### View the history of all operations (log)
 ![img.png](pictures/history_of_batch_operations.png)
+
+## Screenshots of the running system:
+![img.png](pictures/screenshots_of_the_running_system.png)
