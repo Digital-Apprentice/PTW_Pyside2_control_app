@@ -39,5 +39,6 @@ The application dashboard is presented below.
 ##### View the history of all operations (log)
 ![img.png](pictures/history_of_batch_operations.png)
 
-## Screenshots of the running system:
+## Screenshots and link to video of the running system:
+https://drive.google.com/file/d/1f3fa0PJuYuoikj30Qx1oXA68JuWe_ym5/view?usp=sharing
 ![img.png](pictures/screenshots_of_the_running_system.png)
